@@ -1,6 +1,5 @@
 package lib;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,6 +80,7 @@ public class ExcelUtil {
 				}
 				excelTableAsList.add(rowObj);
 			}
+			workBook.close();
 			excelFile.close();
 		} catch (IOException e) {
 			System.out.println("Error in reading: " + excelFileToRead + ". " + e.getMessage());
@@ -150,6 +150,7 @@ public class ExcelUtil {
 				excelTableAsList.add(rowObj);
 				
 			}
+			workBook.close();
 			excelFile.close();
 		} catch (IOException e) {
 			

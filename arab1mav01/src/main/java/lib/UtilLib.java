@@ -3,6 +3,8 @@ package lib;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.Properties;
 
@@ -40,6 +42,18 @@ public class UtilLib {
 
 		return (new String(Base64.getEncoder().encode(new String(unencodedString).getBytes())));
 
+	}
+
+	public static String getTimeStamp(String pattern) {
+		if (pattern==null) {
+			pattern = "yyyyMMddHHmmss";
+		}
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
+		LocalDateTime now = LocalDateTime.now();
+		return dtf.format(now); 
+	}
+	public static String getTimeStamp() {
+		return getTimeStamp(null);
 	}
 
 }

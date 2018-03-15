@@ -1,4 +1,4 @@
-package rnd;
+package autop.seluitests;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,11 +18,6 @@ import lib.WebUILib;
 
 public class AutopLGN01 extends BaseTest {
 	
-	public AutopLGN01(WebDriver driver) {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public static WebDriver driver;
 	
 	@BeforeMethod

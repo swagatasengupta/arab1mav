@@ -1,0 +1,34 @@
+[
+   {
+      "usr1":{
+         "name":"Some Name",
+         "age":24,
+         "addresses":[
+            {
+               "house_num":"345/HP",
+               "Street":"Beckham Street",
+               "locality":"Merrygold",
+               "city":"Yourkshire"
+            },
+            {
+               "house_num":"423-Finjan Heights",
+               "Street":"Hingell Road",
+               "locality":"Crator High",
+               "city":"Jubiyami"
+            }
+         ]
+      },
+      "usr2":{
+         "name":"Second Name",
+         "age":29,
+         "addresses":[
+            {
+               "house_num":"12-HTP",
+               "Street":"Red Street",
+               "locality":"Greenfield",
+               "city":"Kinteria"
+            }
+         ]
+      }
+   }
+]

@@ -16,7 +16,7 @@ public class WebUILib {
 		WebDriver driver = null;
 		switch(browser.toUpperCase()) {
 		case "CHROME":
-			//System.setProperties("",""); //not setting properties as I have drivers directory
+			System.setProperty("webdriver.chrome.driver","/Users/swagat/webdrivers/chromedriver"); //not setting properties as I have drivers directory
 			//covered in PATH system variable
 			driver = new ChromeDriver();
 			break;

@@ -20,6 +20,9 @@ public class Autop_CommonPage {
 	@FindBy(how=How.LINK_TEXT, using="Contact us")
 	public WebElement contactUsLink;
 
+	@FindBy(how=How.XPATH, using="//h1[contains(@class,'page-heading')]")
+	public WebElement elemPageHeader;
+	
 	public Autop_CommonPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

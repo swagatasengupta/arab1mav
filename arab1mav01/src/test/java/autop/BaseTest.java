@@ -3,8 +3,11 @@ package autop;
 import org.testng.annotations.Test;
 
 import autop.seluitests.pagebojects.Autop_CommonPage;
+import autop.seluitests.pagebojects.Autop_CreateAddressesPage;
 import autop.seluitests.pagebojects.Autop_HomePage;
 import autop.seluitests.pagebojects.Autop_LoginPage;
+import autop.seluitests.pagebojects.Autop_MyAccountPage;
+import autop.seluitests.pagebojects.Autop_MyAddressesPage;
 
 import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.WebDriver;
@@ -20,12 +23,19 @@ public class BaseTest {
 	public Autop_CommonPage commonPage = null;
 	public Autop_LoginPage loginPage = null;
 	public Autop_HomePage homePage = null;
+	public Autop_MyAccountPage myAccPage = null;
+	public Autop_MyAddressesPage myAddressesPage = null;
+	public Autop_CreateAddressesPage createAddressPage = null;
+	
 
 	public void initPages(WebDriver driver) {
 		this.driver = driver;
+		homePage = new Autop_HomePage(driver);
 		commonPage = new Autop_CommonPage(driver);
 		loginPage = new Autop_LoginPage(driver);
-		homePage = new Autop_HomePage(driver);
+		myAccPage = new Autop_MyAccountPage(driver);
+		myAddressesPage = new Autop_MyAddressesPage(driver);
+		createAddressPage = new Autop_CreateAddressesPage(driver);
 	}
 
 	@BeforeTest

@@ -8,11 +8,10 @@
 		</classes>
 	</test>
  -->
-	<test name="Selenium-Mozilla">
-		<parameter name="browser" value="mozilla"></parameter>
+	<test name="Selenium-Chrome">
+		<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="autop.seluitests.LoginLogoutTest"></class>
-			<!-- <class name="autop.seluitests.NavigationTest"></class> -->
+			<class name="autop.seluitests.AutopCreateAddress"></class>
 		</classes>
 	</test>
 </suite>

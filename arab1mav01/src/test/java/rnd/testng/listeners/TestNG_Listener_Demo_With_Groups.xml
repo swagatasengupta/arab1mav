@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Group Test Suite">
+<listeners>
+<listener class-name="rnd.testng.listeners.TestNGSuiteListener"></listener>
+<listener class-name="rnd.testng.listeners.TestNGTestListener"></listener>
+</listeners>
+	<test name="Group-Test01">
+	<groups>
+		<define name="all">
+			<include name="api_smoke"></include>
+			<include name="api_regression"></include>
+			<include name="web_smoke"></include>
+			<include name="web_regression"></include>
+		</define>
+		<define name="smoke">
+			<include name="api_smoke"></include>
+			<include name="web_smoke"></include>
+		</define>
+		<define name="regression">
+			<include name="api_regression"></include>
+			<include name="web_regression"></include>
+		</define>
+		<run>
+			<include name="all"></include>
+		</run>
+	</groups>
+		<classes>
+			<class name="rnd.testng.group.TestNGGroupDemo01"></class>
+		</classes>
+	</test>
+</suite>

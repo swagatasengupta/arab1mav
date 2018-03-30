@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Group Test Suite">
+<listeners>
+<listener class-name="rnd.testng.listeners.TestNGSuiteListener"></listener>
+<listener class-name="rnd.testng.listeners.TestNGTestListener"></listener>
+</listeners>
+	<test name="Annotations-Test01">
+		<parameter name="param1" value="value1"></parameter>
+		<parameter name="param2" value="value2"></parameter>
+		<classes>
+			<class name="rnd.testng.listeners.DemoListenerTestClass"></class>
+			<class name="rnd.testng.dependency.TestDependencyDemo1"></class>
+		</classes>
+	</test>
+	<test name="Annotations-Test02">
+		<parameter name="param1" value="valueX"></parameter>
+		<parameter name="param2" value="valueY"></parameter>
+		<classes>
+			<class name="rnd.testng.listeners.DemoListenerTestClass"></class>
+			<class name="rnd.testng.dependency.TestDependencyDemo1"></class>
+		</classes>
+	</test>
+</suite>

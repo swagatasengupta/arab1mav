@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Group Test Suite">
-	<test name="Group-Test01" >
+	<test name="Group-Test01" preserve-order="true">
 		<classes>
-			<class name="rnd.testng.order.TestNGOrderDemo01"></class>
 			<class name="rnd.testng.order.TestNGOrderDemo02"></class>
+			<class name="rnd.testng.order.TestNGOrderDemo01"></class>
 		</classes>
 	</test>
 </suite>

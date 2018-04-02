@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Group Test Suite" parallel="tests">
+	<listeners>
+		<listener class-name="rnd.testng.listeners_extent.TestNGTestListener"></listener>
+	</listeners>
+	<test name="Annotations-Test01">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="device" value="Android Tab"></parameter>
+		<classes>
+			<class name="rnd.testng.listeners_extent.DemoListenerTestClass"></class>
+			<class name="rnd.testng.dependency.TestDependencyDemo1"></class>
+		</classes>
+	</test>
+	<test name="Annotations-Test02">
+		<parameter name="browser" value="mozilla"></parameter>
+		<parameter name="device" value="iPad"></parameter>
+		<classes>
+			<class name="rnd.testng.listeners_extent.DemoListenerTestClass"></class>
+			<class name="rnd.testng.dependency.TestDependencyDemo1"></class>
+		</classes>
+	</test>
+</suite>

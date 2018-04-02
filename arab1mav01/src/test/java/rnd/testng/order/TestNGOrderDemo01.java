@@ -17,7 +17,7 @@ public class TestNGOrderDemo01 {
 		System.out.println("d01orderTest02");
 	}
 	
-	@Test(priority = 0)
+	@Test(priority = 1)
 	public void d01orderTest03() {
 		System.out.println("d01orderTest03");
 	}

@@ -19,4 +19,10 @@
 			<class name="rnd.testng.dependency.TestDependencyDemo1"></class>
 		</classes>
 	</test>
+	<test name="Annotations-Test03">
+		<classes>
+			<class name="rnd.testng.listeners_extent.DemoListenerTestClass"></class>
+			<class name="rnd.testng.dependency.TestDependencyDemo1"></class>
+		</classes>
+	</test>
 </suite>

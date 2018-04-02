@@ -83,14 +83,12 @@ public class TestNGTestListener implements ITestListener,ISuiteListener {
 
 		ExtentTestManager.getTest().log(LogStatus.INFO, getTestMethodName(testResult)
 				+ " @Test is statrting");
-		ExtentTestManager.getTest().assignCategory("TestCategory");
-		
+		//Add the parameters to the test if any
 		Map params = getXMLParamList(testResult);
-		ArrayList<String> paramValues = (ArrayList<String>) params.values();
-		System.out.println(paramValues.toString());
+		
 		if(params != null) {
-			for (int i=0; i < paramValues.size(); i++) {
-				ExtentTestManager.getTest().assignCategory(paramValues.get(i));
+			for (Object value: params.values()) {
+				ExtentTestManager.getTest().assignCategory((String)value);
 			}
 		}
 		

@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -61,4 +63,15 @@ public class WebUILib {
 				).click().perform();
 	}
 
+	public static String getScreenShotBase64Path(WebDriver driver) {
+		String base64ScreenshotPath = "data:image/png;base64,"
+				+ ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+		return base64ScreenshotPath;
+	}
+	
+	public static void takeScrShotAttachToReport(WebDriver driver) {
+		String base64ScreenshotPath = "data:image/png;base64,"
+				+ ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+		ExtentTestManager.attachBase64ScrShotToCurrExtentTest("Screenshot", base64ScreenshotPath);
+	}
 }

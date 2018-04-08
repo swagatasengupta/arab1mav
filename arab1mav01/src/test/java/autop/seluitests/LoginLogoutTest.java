@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -44,7 +45,7 @@ public class LoginLogoutTest extends BaseTest {
 		Assert.assertTrue(retVal);
 		commonPage.signOutLink.click();
 		Thread.sleep(3000);
-		driver.manage().timeouts().setScriptTimeout(1, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
 		try {
 			driver.findElement(By.className("logout"));
@@ -55,13 +56,19 @@ public class LoginLogoutTest extends BaseTest {
 			System.out.println("Log Out button was not found as expected");
 		}
 
-		driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.quit();
 
 	}
 
 	@AfterMethod
-	public void afterMethod() {
-		driver.quit();
+	public void tearDown(ITestResult result) {
+		int resStatus = result.getStatus();
+		if(resStatus == ITestResult.FAILURE || resStatus == ITestResult.SKIP) {
+			WebUILib.takeScrShotAttachToReport(driver);
+			driver.quit();
+		}
+		
 	}
 
 }

@@ -17,8 +17,8 @@ public class DemoListenerTestClass {
   @Test
   public void f() {
 	  System.out.println("during testMethod");
-	  ExtentTestManager.getTest().log(LogStatus.INFO, "custom message from inside the test");
-	  ExtentTestManager.getTest().log(LogStatus.PASS, "custom PASS message from inside the test");
+	  ExtentReportTestManager.getTest().log(LogStatus.INFO, "custom message from inside the test");
+	  ExtentReportTestManager.getTest().log(LogStatus.PASS, "custom PASS message from inside the test");
 	  
   }
   @BeforeMethod

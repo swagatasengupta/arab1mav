@@ -19,7 +19,7 @@ import org.testng.annotations.AfterSuite;
 
 public class BaseTest {
 
-	private WebDriver driver = null;
+	protected WebDriver driver = null;
 	public Autop_CommonPage commonPage = null;
 	public Autop_LoginPage loginPage = null;
 	public Autop_HomePage homePage = null;

@@ -13,10 +13,14 @@ public class AutopDataProviders {
 	public Object[][] getDataCreateAddress() {
 		Connection conn = SQLiteDBUtil.connectDB("resources/AutopTestData.db");
 		
+/*		String qCreateAddress = "select "
+				+ "first_name, last_name, company, address1, address2,"
+				+ " city, state, zip, homePhone, mobile, additional"
+				+ " from CreateAddressData where enabled=1";*/
 		String qCreateAddress = "select "
 				+ "first_name, last_name, company, address1, address2,"
 				+ " city, state, zip, homePhone, mobile, additional"
-				+ " from CreateAddressData where enabled=1";
+				+ " from CreateAddressData where first_name='Swagat';";
 		ResultSet res = SQLiteDBUtil.getResultSet(conn, qCreateAddress);
 		return SQLiteDBUtil.convertResultSetToDataProvider(res);
 	}

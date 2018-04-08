@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
 
-import rnd.testng.listeners_extent.ExtentTestManager;
+import rnd.testng.listeners_extent.ExtentReportTestManager;
 
 public class TestDependencyDemo1 {
 
@@ -18,7 +18,7 @@ public class TestDependencyDemo1 {
 	@Test()
 	public void testMethod2() {
 		System.out.println("testMethod2");
-		ExtentTestManager.getTest().log(LogStatus.FAIL, "Deliberate failure using hard assert");
+		ExtentReportTestManager.getTest().log(LogStatus.FAIL, "Deliberate failure using hard assert");
 		Assert.assertEquals(true, false);
 	}
 	

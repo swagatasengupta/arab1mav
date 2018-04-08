@@ -6,10 +6,10 @@ import java.util.Map;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-public class ExtentTestManager {
+public class ExtentReportTestManager {
 
 	private static Map extentTestMap = new HashMap();
-	private static ExtentReports extReport = ExtentManager.getReportInstance();
+	private static ExtentReports extReport = ExtentReportManager.getReportInstance();
 	
 	public static synchronized ExtentTest startTest(String testName, String description) {
 		ExtentTest test = extReport.startTest(testName, description);

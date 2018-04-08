@@ -1,4 +1,6 @@
-package rnd.testng.listeners_extent;
+package lib;
+
+import java.io.File;
 
 import com.relevantcodes.extentreports.ExtentReports;
 
@@ -9,7 +11,11 @@ public class ExtentManager {
 	private static ExtentReports extReport;
 	
 	public synchronized static ExtentReports getReportInstance() {
-		String repPath = "C:\\Users\\swagat\\Desktop\\TestNG_Demo_ExtentReport"
+		String repDir = System.getProperty("user.home") + File.separator + "reports";
+		File fRepDir = new File(repDir);
+		fRepDir.mkdirs();
+		
+		String repPath = repDir + File.separator + "TestExecutionReport_"
 				+ UtilLib.getTimeStamp() + ".html";
 		if(extReport == null) {
 			extReport = new ExtentReports(repPath, false);
@@ -17,5 +23,4 @@ public class ExtentManager {
 		
 		return extReport;
 	}
-	
 }

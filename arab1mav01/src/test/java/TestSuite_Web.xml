@@ -1,16 +1,25 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Web UI Test Suite" parallel="tests" thread-count="3" verbose="1">
-<!-- 	<test name="Selenium-Chrome">
-		<parameter name="browser" value="chrome"></parameter>
-		<parameter name="dummy" value="1"></parameter>
+<suite name="Web UI Test Suite" parallel="tests">
+	<listeners>
+		<listener class-name="listeners.TestNGTestListener"></listener>
+		<listener class-name="listeners.AnnotationTransformerListener"></listener>
+	</listeners>
+
+	<test name="Selenium-Mozilla">
+		<parameter name="browser" value="mozilla"></parameter>
+		<parameter name="testType" value="UI Web"></parameter>
+		<parameter name="testGroup" value="Smoke Test"></parameter>
 		<classes>
-			<class name="autop.rnd.AutopLGN01"></class>
+			<class name="autop.seluitests.LoginLogoutTest"></class>
+			<class name="autop.seluitests.AutopCreateAddress"></class>
 		</classes>
 	</test>
- -->
 	<test name="Selenium-Chrome">
 		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="testType" value="UI Web"></parameter>
+		<parameter name="testGroup" value="Smoke Test"></parameter>
 		<classes>
+			<class name="autop.seluitests.LoginLogoutTest"></class>
 			<class name="autop.seluitests.AutopCreateAddress"></class>
 		</classes>
 	</test>

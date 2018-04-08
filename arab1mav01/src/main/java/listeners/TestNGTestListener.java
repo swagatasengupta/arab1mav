@@ -1,6 +1,5 @@
-package rnd.testng.listeners_extent;
+package listeners;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.testng.ISuite;
@@ -10,14 +9,14 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import lib.UtilLib;
+import lib.ExtentManager;
+import lib.ExtentTestManager;
 
 public class TestNGTestListener implements ITestListener,ISuiteListener {
 
-	public ExtentReports extRep = ExtentReportManager.getReportInstance();
+	public ExtentReports extRep = ExtentManager.getReportInstance();
 
 	
 	@Override
@@ -49,10 +48,10 @@ public class TestNGTestListener implements ITestListener,ISuiteListener {
 		System.out.println("TestNGTestListener>> "
 				+ getTestAndMethodName(testResult)
 				+ "Test Method just failed");
-		ExtentReportTestManager.getTest().log(LogStatus.FAIL, getTestMethodName(testResult)
+		ExtentTestManager.getCurrentTest().log(LogStatus.FAIL, getTestMethodName(testResult)
 				+ " @Test has failed.");
 		
-		ExtentReportTestManager.endTest();
+		ExtentTestManager.endCurrentTest();
 
 		extRep.flush();
 
@@ -63,10 +62,10 @@ public class TestNGTestListener implements ITestListener,ISuiteListener {
 		System.out.println("TestNGTestListener>> "
 				+ getTestAndMethodName(testResult)
 				+ "Test Method just got skipped");
-		ExtentReportTestManager.getTest().log(LogStatus.SKIP, getTestMethodName(testResult)
+		ExtentTestManager.getCurrentTest().log(LogStatus.SKIP, getTestMethodName(testResult)
 				+ " @Test has been skipped.");
 		
-		ExtentReportTestManager.endTest();
+		ExtentTestManager.endCurrentTest();
 
 		extRep.flush();
 
@@ -78,17 +77,17 @@ public class TestNGTestListener implements ITestListener,ISuiteListener {
 				+ getTestAndMethodName(testResult)
 				+ "Test Method just got started");
 		
-		ExtentReportTestManager.startTest(getTestMethodName(testResult),
+		ExtentTestManager.startTest(getTestMethodName(testResult),
 				getTestMethodDescription(testResult));
 
-		ExtentReportTestManager.getTest().log(LogStatus.INFO, getTestMethodName(testResult)
+		ExtentTestManager.getCurrentTest().log(LogStatus.INFO, getTestMethodName(testResult)
 				+ " @Test is statrting");
 		//Add the parameters to the test if any
 		Map params = getXMLParamList(testResult);
 		
 		if(params != null) {
 			for (Object value: params.values()) {
-				ExtentReportTestManager.getTest().assignCategory((String)value);
+				ExtentTestManager.getCurrentTest().assignCategory((String)value);
 			}
 		}
 		
@@ -100,10 +99,10 @@ public class TestNGTestListener implements ITestListener,ISuiteListener {
 				+ getTestAndMethodName(testResult)
 				+ "Test Method just was successful");
 		
-		ExtentReportTestManager.getTest().log(LogStatus.PASS, getTestMethodName(testResult)
+		ExtentTestManager.getCurrentTest().log(LogStatus.PASS, getTestMethodName(testResult)
 				+ " @Test has passed");
 		
-		ExtentReportTestManager.endTest();
+		ExtentTestManager.endCurrentTest();
 
 		extRep.flush();
 	}

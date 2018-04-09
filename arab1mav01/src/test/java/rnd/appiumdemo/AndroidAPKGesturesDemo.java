@@ -5,16 +5,19 @@ import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class AndroidAPKDemo1 {
+public class AndroidAPKGesturesDemo {
 
 	public static void main(String[] args) throws MalformedURLException {
 
@@ -29,7 +32,23 @@ public class AndroidAPKDemo1 {
 
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		TouchAction tAct = new TouchAction(driver);
+		AndroidElement pref = driver.findElementByXPath("//android.widget.TextView[@text='Views']");
+		tAct.tap(pref).perform();
+		AndroidElement expList = driver.findElementByXPath("//android.widget.TextView[@text='Expandable Lists']");
+		tAct.tap(expList).perform();
 		
+		AndroidElement custAdapter = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Custom Adapter')]"));
+		tAct.tap(custAdapter).perform();
+		
+		AndroidElement dogNames = driver.findElementByXPath("//android.widget.TextView[@text='Dog Names']");
+		//tAct.longPress(dogNames).perform();
+		//Alternatively
+		//press, wait and release
+		tAct.press(dogNames).waitAction(Duration.ofSeconds(2000)).release().perform();
+		
+/*		
 		//Click Preference on Home Page
 		driver.findElementByXPath("//android.widget.TextView[@text='Preference']").click();
 		
@@ -51,7 +70,7 @@ public class AndroidAPKDemo1 {
 		
 		driver.findElementById("android:id/button1").click();
 		//driver.findElementByAndroidUIAutomator("new UiSelector().text=\"OK\"").click();
-		
+*/		
 	}
 
 	

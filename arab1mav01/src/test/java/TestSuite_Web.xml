@@ -5,7 +5,7 @@
 		<listener class-name="listeners.AnnotationTransformerListener"></listener>
 	</listeners>
 
-	<test name="Selenium-Mozilla">
+	<test name="Selenium-Mozilla" enabled="false">
 		<parameter name="browser" value="mozilla"></parameter>
 		<parameter name="testType" value="UI Web"></parameter>
 		<parameter name="testGroup" value="Smoke Test"></parameter>
@@ -14,13 +14,22 @@
 			<class name="autop.seluitests.AutopCreateAddress"></class>
 		</classes>
 	</test>
-	<test name="Selenium-Chrome">
+	<test name="Selenium-Chrome" enabled="false">
 		<parameter name="browser" value="chrome"></parameter>
 		<parameter name="testType" value="UI Web"></parameter>
 		<parameter name="testGroup" value="Smoke Test"></parameter>
 		<classes>
 			<class name="autop.seluitests.LoginLogoutTest"></class>
 			<class name="autop.seluitests.AutopCreateAddress"></class>
+		</classes>
+	</test>
+	<test name="Appium">
+		<parameter name="browser" value="N/A"></parameter>
+		<parameter name="testType" value="UI Mobile"></parameter>
+		<parameter name="testGroup" value="Smoke Test"></parameter>
+		<parameter name="deviceName" value="AVD_Nexus5X_API27x86"></parameter>
+		<classes>
+			<class name="androiddemoapk.appiumuitests.WifiSettings"></class>
 		</classes>
 	</test>
 </suite>

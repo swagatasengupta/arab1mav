@@ -1,18 +1,23 @@
 package rnd.appiumdemo;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import org.aspectj.util.FileUtil;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class AppiumDemo_PreInstalledCalculatorDemoOnRealDevice {
+public class AppiumDemo_MiscOnRealDevice {
 
-	public static void main(String[] args) throws MalformedURLException, InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		String deviceName = "Android Device";
 		//String appPath = new File("resources/androiddemoapp.apk").getAbsolutePath();
 		
@@ -32,8 +37,17 @@ public class AppiumDemo_PreInstalledCalculatorDemoOnRealDevice {
 
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			
-		String expression = "12.5x6=";
+		
+		System.out.println(driver.getContext());
+		System.out.println(driver.getOrientation());
+
+		if(driver.isLocked()) {
+			driver.unlockDevice();
+		} else {
+			System.out.println("device is unlocked");
+		}
+		
+/*		String expression = "12.5x6";
 		
 		Thread.sleep(2000);
 		
@@ -41,7 +55,22 @@ public class AppiumDemo_PreInstalledCalculatorDemoOnRealDevice {
 			
 			driver.findElementById(getCalcID(String.valueOf(input))).click();
 		}
+
 		
+		String scrShotFileName = System.getProperty("user.home") + File.separator + "TestScreenshot01.jpg";
+		saveScreenShotAsFile(scrShotFileName, driver);
+		
+		driver.pressKeyCode(AndroidKeyCode.BACK); //sends back button press command
+		Thread.sleep(1000);
+		scrShotFileName = System.getProperty("user.home") + File.separator + "TestScreenshot02.jpg";
+		saveScreenShotAsFile(scrShotFileName, driver);
+		
+		driver.pressKeyCode(AndroidKeyCode.HOME); //sends Home button press command
+		Thread.sleep(1000);
+		scrShotFileName = System.getProperty("user.home") + File.separator + "TestScreenshot03.jpg";
+		saveScreenShotAsFile(scrShotFileName, driver);
+		
+		*/
 	}
 
 	
@@ -57,6 +86,14 @@ public class AppiumDemo_PreInstalledCalculatorDemoOnRealDevice {
 		case "6": return "com.google.android.calculator:id/digit_6";
 		default: return null;
 		}
+	}
+
+	private static void saveScreenShotAsFile(String path, AndroidDriver<AndroidElement> driver) throws IOException {
+		File scrShotSrc = driver.getScreenshotAs(OutputType.FILE);
+		File scrShotDest = new File(path);
+		FileUtil.copyFile(scrShotSrc, scrShotDest);
+
+
 	}
 	
 }
